@@ -1,3 +1,5 @@
+<%@ page import="com.book.BookDAO" %>
+<%@ page import="com.book.BookVO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -11,9 +13,10 @@
 </head>
 <body>
 
+
 <h1>Edit Form</h1>
 <%--@elvariable id="bookVO" type=""--%>
-<form:form modelAttribute="bookVO" action="editok" method="post">
+<form:form action="editok" method="post" modelAttribute="bookVO">
     <form:hidden path="seq"/>
     <table id="edit">
         <tr><td>제목:</td><td><form:input path="title"/></td></tr>

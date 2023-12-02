@@ -60,6 +60,8 @@
     <title>Title</title>
 </head>
 <body>
+<img src="./img/img.png" width="300"/>
+<h1>도서 대여 서비스</h1>
 <table id="list">
     <tr>
         <th>No</th>
@@ -84,7 +86,7 @@
             <td>${u.rentok}</td>
             <td>${u.isbn}</td>
             <td>${u.regdate}</td>
-            <td>${u.retdate}</td>
+            <td>${u.getRetdate()}</td>
             <td><a href="editpost/${u.seq}"><i class="fa-solid fa-pen-to-square"></i></a></td>
             <td><a href="javascript:delete_ok(${u.seq})"><i class="fa-solid fa-trash"></i></a></td>
         </tr>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.awt.print.Book;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class BookDAO {
     public int insertBook(BookVO vo){
         return jdbcTemplate.update(BOARD_INSERT,
                 new Object[]{vo.getTitle(), vo.getWriter(), vo.getCategory(), vo.getPublisher(), vo.getRentok(), vo.getIsbn()});
+
     }
 
     public int deleteBook(int seq){
