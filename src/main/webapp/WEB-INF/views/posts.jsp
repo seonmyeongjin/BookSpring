@@ -36,7 +36,7 @@
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: center;
-            background-color: #006bb3;
+            background-color: #4caf50;
             color: white;
         }
         .fa-trash{
@@ -52,7 +52,7 @@
         #add {
             text-decoration: none;
             padding: 10px 20px;
-            background-color: #3498db;
+            background-color: #4caf50;
             color: #fff;
             border-radius: 5px;
         }
@@ -60,39 +60,39 @@
     <title>Title</title>
 </head>
 <body>
-<img src="./img/img.png" width="300"/>
-<h1>도서 대여 서비스</h1>
-<table id="list">
-    <tr>
-        <th>No</th>
-        <th>제목</th>
-        <th>저자</th>
-        <th>종류</th>
-        <th>출판사</th>
-        <th>대여여부</th>
-        <th>isbn</th>
-        <th>대여날짜</th>
-        <th>반납날짜</th>
-        <th>수정</th>
-        <th>삭제</th>
-    </tr>
-    <c:forEach items="${list}" var="u">
+    <img src="./img/img.png" width="300"/>
+    <h1>도서 대여 서비스</h1>
+    <table id="list">
         <tr>
-            <td>${u.seq}</td>
-            <td>${u.title}</td>
-            <td>${u.writer}</td>
-            <td>${u.category}</td>
-            <td>${u.publisher}</td>
-            <td>${u.rentok}</td>
-            <td>${u.isbn}</td>
-            <td>${u.regdate}</td>
-            <td>${u.getRetdate()}</td>
-            <td><a href="editpost/${u.seq}"><i class="fa-solid fa-pen-to-square"></i></a></td>
-            <td><a href="javascript:delete_ok(${u.seq})"><i class="fa-solid fa-trash"></i></a></td>
+            <th>No</th>
+            <th>제목</th>
+            <th>저자</th>
+            <th>종류</th>
+            <th>출판사</th>
+            <th>대여여부</th>
+            <th>isbn</th>
+            <th>대여날짜</th>
+            <th>반납날짜</th>
+            <th>수정</th>
+            <th>삭제</th>
         </tr>
-    </c:forEach>
-</table>
-<br/><button type="button" onclick="location.href='add'">새글쓰기</button>
+        <c:forEach items="${list}" var="u">
+            <tr>
+                <td><a href="view/${u.seq}">${u.seq}</a></td>
+                <td><a href="view/${u.seq}">${u.title}</a></td>
+                <td><a href="view/${u.seq}">${u.writer}</a></td>
+                <td><a href="view/${u.seq}">${u.category}</a></td>
+                <td><a href="view/${u.seq}">${u.publisher}</a></td>
+                <td><a href="view/${u.seq}">${u.rentok}</a></td>
+                <td><a href="view/${u.seq}">${u.isbn}</a></td>
+                <td><a href="view/${u.seq}">${u.regdate}</a></td>
+                <td><a href="view/${u.seq}">${u.getRetdate()}</a></td>
+                <td><a href="editpost/${u.seq}"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td><a href="javascript:delete_ok(${u.seq})"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+        </c:forEach>
+    </table>
+    <br/><button type="button" onclick="location.href='add'">새글쓰기</button>
 
 <script>
     function delete_ok(id){

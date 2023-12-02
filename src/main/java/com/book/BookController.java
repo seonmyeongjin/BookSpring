@@ -64,4 +64,12 @@ public class BookController {
             System.out.println("데이터 삭제 성공!!!");
         return "redirect:../list";
     }
+
+    @RequestMapping(value="/view/{id}", method = RequestMethod.GET)
+    public String viewPost(@PathVariable("id") int id, Model model) {
+        BookDAO boardDAO = new BookDAO();
+        BookVO bookVO = bookDAO.getBook(id);
+        model.addAttribute("selectedPost", bookVO);
+        return "view";
+    }
 }
