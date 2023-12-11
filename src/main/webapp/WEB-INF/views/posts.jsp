@@ -60,7 +60,7 @@
     <title>Title</title>
 </head>
 <body>
-    <img src="./img/img.png" width="300"/>
+    <img src="../img/img.png"/>
     <h1>도서 대여 서비스</h1>
     <table id="list">
         <tr>

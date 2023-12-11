@@ -3,32 +3,33 @@ package com.book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/book")
 public class BookController {
+
     @Autowired
     BookDAO bookDAO;
-
-
-    //목록보기
-    @RequestMapping(value="/list", method= RequestMethod.GET)
+    @RequestMapping("/")
+    public String home(){
+        System.out.println("Hello");
+        return "test";
+    }
+    @RequestMapping(value="/book/list", method= RequestMethod.GET)
     public String booklist(Model model){
         System.out.println("hello");
         model.addAttribute("list", bookDAO.getBookList());
         return "posts";
     }
 
-    @RequestMapping(value="/add", method = RequestMethod.GET)
+    @RequestMapping(value="/book/add", method = RequestMethod.GET)
     public String addPost(){
         return "addform";
     }
 
-    @RequestMapping(value="/addok", method = RequestMethod.POST)
+    @RequestMapping(value="/book/addok", method = RequestMethod.POST)
     public String addPostOK(BookVO vo){
         int i = bookDAO.insertBook(vo);
         if(i==0)
@@ -38,14 +39,14 @@ public class BookController {
         return "redirect:list";
     }
 
-    @RequestMapping(value="/editpost/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/book/editpost/{id}", method = RequestMethod.GET)
     public String editPost(@PathVariable("id") int id, Model model){
         BookVO bookVO = bookDAO.getBook(id);
         model.addAttribute("bookVO", bookVO);
         return "editform";
     }
 
-    @RequestMapping(value="/editpost/editok", method = RequestMethod.POST)
+    @RequestMapping(value="/book/editpost/editok", method = RequestMethod.POST)
     public String editPostOK(BookVO vo){
         int i = bookDAO.updateBook(vo);
         if(i==0)
@@ -55,7 +56,7 @@ public class BookController {
         return "redirect:../list";
     }
 
-    @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/book/delete/{id}", method=RequestMethod.GET)
     public String deletePostOK(@PathVariable("id")int id){
         int i = bookDAO.deleteBook(id);
         if(i==0)
@@ -65,7 +66,7 @@ public class BookController {
         return "redirect:../list";
     }
 
-    @RequestMapping(value="/view/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/book/view/{id}", method = RequestMethod.GET)
     public String viewPost(@PathVariable("id") int id, Model model) {
         BookDAO boardDAO = new BookDAO();
         BookVO bookVO = bookDAO.getBook(id);
